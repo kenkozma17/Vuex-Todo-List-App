@@ -1,5 +1,5 @@
 <template>
-    <button @click="handleClick" class="flex-no-shrink p-2 border-2 rounded text-teal bg-green-600 border-green-600 text-white">
+    <button @click="handleClick" class="flex-no-shrink p-2 border-2 rounded border-none">
         <slot></slot>
     </button>
 </template>

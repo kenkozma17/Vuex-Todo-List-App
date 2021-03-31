@@ -5,6 +5,9 @@
 </template>
 
 <style>
+body {
+  background: hsl(210deg, 47%, 18%);
+}
 html {
   font-family:
     'Source Sans Pro',

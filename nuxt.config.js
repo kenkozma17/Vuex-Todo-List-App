@@ -29,7 +29,8 @@ export default {
     '~/components',
     '~/components/Headers',
     '~/components/Generic',
-    '~/components/Forms'
+    '~/components/Forms',
+    '~/components/Icons',
     ]
   },
 

@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <TodoContentWrapper>
-    <template #title>
-        <MainHeading>Todo List</MainHeading>
-    </template>
-    <template #content>
-      <Input v-model="newTodo.title" @keyup.enter.native="addTodo" />
-      <ActionButton @clicked="addTodo">Add</ActionButton>
-    </template>
-    <template #todos>
-      <TodoList :items="todos" />
-    </template>
+      <template #title>
+          <MainHeading>Todo List</MainHeading>
+      </template>
+      <template #content>
+        <Input v-model="newTodo.title" @keyup.enter.native="addTodo" />
+        <ActionButton class="text-white bg-green-600" @clicked="addTodo">Add</ActionButton>
+      </template>
+      <template #todos>
+        <TodoList :items="todos" />
+      </template>
     </TodoContentWrapper>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       newTodo: {
+        id: '',
         title: null,
         isDone: false
       }
@@ -27,6 +28,7 @@ export default {
   },
   methods: {
     addTodo() {
+      this.newTodo.id = this.newTodoId;
       this.$store.dispatch('addTodo', Object.assign({},this.newTodo));
       this.newTodo.title = '';
     }
@@ -34,6 +36,9 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos;
+    },
+    newTodoId() {
+      return this.todos.slice(-1)[0].id + 1;
     }
   }
 }
