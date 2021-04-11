@@ -15,14 +15,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import {Todo} from "~/types/todo";
+import calculate from "~/mixins/calculate";
+export default Vue.extend({
+  mixins: [calculate],
   data() {
     return {
       newTodo: {
-        id: '',
-        title: null,
-        isDone: false
+        id: 0,
+        title: null as null|string,
+        isDone: false as boolean
       }
     }
   },
@@ -34,14 +38,14 @@ export default {
     }
   },
   computed: {
-    todos() {
+    todos(): Todo[] {
       return this.$store.state.todos;
     },
-    newTodoId() {
+    newTodoId(): number {
       return this.todos.slice(-1)[0].id + 1;
     }
   }
-}
+});
 </script>
 
 <style>
